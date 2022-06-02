@@ -1,0 +1,1 @@
+import{_ as n,c as s,o as a,a as p}from"./app.4d2006aa.js";const y='{"title":"vite.config.js\u6587\u4EF6\u914D\u7F6E\u89E3\u6790","description":"","frontmatter":{},"headers":[],"relativePath":"technology/vite/index.md"}',t={},e=p("",2),o=[e];function r(l,c,u,i,k,m){return a(),s("div",null,o)}var g=n(t,[["render",r]]);export{y as __pageData,g as default};

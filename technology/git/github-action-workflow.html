@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>GitHub Action 实现持续集成——gh-pages的自动部署。 | 你个二傻子</title>
+    <meta name="description" content="Anlyyao Blog, A VitePress Site">
+    <link rel="stylesheet" href="/vitepress-blog/assets/style.91908eb8.css">
+    <link rel="modulepreload" href="/vitepress-blog/assets/app.4d2006aa.js">
+    <link rel="modulepreload" href="/vitepress-blog/assets/technology_git_github-action-workflow.md.d24dbed7.lean.js">
+    
+    <link rel="icon" href="/favicon.ico">
+  <meta name="twitter:title" content="GitHub Action 实现持续集成——gh-pages的自动部署。 | 你个二傻子">
+  <meta property="og:title" content="GitHub Action 实现持续集成——gh-pages的自动部署。 | 你个二傻子">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="theme"><header class="nav-bar" data-v-675d8756><div class="sidebar-button" data-v-675d8756><svg class="icon" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z" class></path></svg></div><a class="nav-bar-title" href="/vitepress-blog/" aria-label="你个二傻子, back to home" data-v-675d8756 data-v-cc01ef16><!----> 你个二傻子</a><div class="flex-grow" data-v-675d8756></div><div class="nav" data-v-675d8756><nav class="nav-links" data-v-675d8756 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress-blog/" data-v-b8818f8c>首页 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item active" href="/vitepress-blog/technology/" data-v-b8818f8c>技术 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress-blog/about/" data-v-b8818f8c>关于 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item isExternal" href="https://github.com/anlyyao/vitepress-blog" target="_blank" rel="noopener noreferrer" data-v-b8818f8c>GitHub <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" data-v-b8818f8c><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></div><!--]--><!----><!----></nav></div><!--[--><!--]--></header><aside class="sidebar" data-v-83e92a68><nav class="nav-links nav" data-v-83e92a68 data-v-eab3edfe><!--[--><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress-blog/" data-v-b8818f8c>首页 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item active" href="/vitepress-blog/technology/" data-v-b8818f8c>技术 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item" href="/vitepress-blog/about/" data-v-b8818f8c>关于 <!----></a></div></div><div class="item" data-v-eab3edfe><div class="nav-link" data-v-eab3edfe data-v-b8818f8c><a class="item isExternal" href="https://github.com/anlyyao/vitepress-blog" target="_blank" rel="noopener noreferrer" data-v-b8818f8c>GitHub <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewbox="0 0 100 100" width="15" height="15" data-v-b8818f8c><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div></div><!--]--><!----><!----></nav><!--[--><!--]--><ul class="sidebar-links" data-v-83e92a68><!--[--><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/vue/">vue</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/vue/">基本使用</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/vue/model">其他</a><!----></li></ul></li><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/react/">react</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/react/">基本使用</a><!----></li></ul></li><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/typescript/">typescript</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/typescript/">基本使用</a><!----></li></ul></li><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/git/">git</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/git/">常用命令</a><!----></li><li class="sidebar-link"><a class="sidebar-link-item active" href="/vitepress-blog/technology/git/github-action-workflow">Github Action</a><!----></li></ul></li><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/vitepress/">vitepress</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/vitepress/">基本使用</a><!----></li></ul></li><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/eslint/">eslint</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/eslint/">基本使用</a><!----></li></ul></li><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/components/miniprogram/">组件(miniprogram)</a><ul class="sidebar-links"><li class="sidebar-link"><a class="sidebar-link-item" href="/vitepress-blog/technology/components/miniprogram/waterfall">Waterfall</a><!----></li></ul></li><li class="sidebar-link"><p class="sidebar-link-item">组件(vue3)</p><!----></li><!--]--></ul><!--[--><!--]--></aside><div class="sidebar-mask"></div><main class="page" data-v-7eddb2c4><div class="container" data-v-7eddb2c4><!--[--><!--]--><div style="position:relative;" class="content" data-v-7eddb2c4><div><h1 id="github-action-实现持续集成——gh-pages的自动部署。" tabindex="-1">GitHub Action 实现持续集成——gh-pages的自动部署。 <a class="header-anchor" href="#github-action-实现持续集成——gh-pages的自动部署。" aria-hidden="true">#</a></h1><h3 id="持续集成由很多操作组成，比如拉取代码、执行测试用例、登录远程服务器，发布到第三方服务等等。github-把这些操作就称为-actions。" tabindex="-1">持续集成由很多操作组成，比如拉取代码、执行测试用例、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 actions。 <a class="header-anchor" href="#持续集成由很多操作组成，比如拉取代码、执行测试用例、登录远程服务器，发布到第三方服务等等。github-把这些操作就称为-actions。" aria-hidden="true">#</a></h3><h3 id="相关术语：" tabindex="-1">相关术语： <a class="header-anchor" href="#相关术语：" aria-hidden="true">#</a></h3><ul><li>workflow（工作流程）：持续集成一次运行的过程，就是一个 workflow。</li><li>job（任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。</li><li>step（步骤）：每个 job 由多个 step 构成，一步步完成。</li><li>action（动作）：每个 step 可以依次执行一个或多个命令（action）。</li></ul><h3 id="workflow-文件" tabindex="-1"><code>workflow</code> 文件 <a class="header-anchor" href="#workflow-文件" aria-hidden="true">#</a></h3><p><code>GitHub Actions</code> 的配置文件叫做 <code>workflow</code> 文件，存放在代码仓库的 <code>.github/workflows</code> 目录,后缀名统一为 <code>.yml</code>，比如 <code>deploy.yml</code>。一个库可以有多个 <code>workflow</code> 文件。<code>GitHub</code> 只要发现 <code>.github/workflows</code> 目录里面有 <code>.yml</code> 文件，就会自动运行该文件。</p><h4 id="workflow-文件的配置字段非常多，这里列举一些基本字段。" tabindex="-1"><code>workflow</code> 文件的配置字段非常多，这里列举一些基本字段。 <a class="header-anchor" href="#workflow-文件的配置字段非常多，这里列举一些基本字段。" aria-hidden="true">#</a></h4><blockquote><p><code>name</code>: <code>name</code> 字段是 <code>workflow </code>的名称。如果省略该字段，默认为当前 workflow 的文件名。</p></blockquote><div class="language-bash line-numbers-mode"><pre><code>name: build and deploy
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><blockquote><p><code>on</code>: <code>on</code>字段指定触发 <code>workflow</code> 的条件，通常是 <code>push、pull_request</code>。指定触发事件时，可以限定分支或标签。</p></blockquote><div class="language-bash line-numbers-mode"><pre><code>on:
+  push:
+    branches:
+      - mian
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>上面代码指定，只有 <code>main</code> 分支发生 <code>push</code> 事件时，才会触发 <code>workflow</code>。</p><blockquote><p><code>jobs</code>: <code>jobs</code> 字段，表示要执行的一项或多项任务。其中的 runs-on 字段指定运行所需要的虚拟机环境。</p></blockquote><div class="language-bash line-numbers-mode"><pre><code>runs-on: ubuntu-latest
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><blockquote><p><code>steps</code>: <code>steps </code>字段指定每个 <code>job</code> 的运行步骤，可以包含一个或多个步骤。每个步骤都可以指定以下三个字段。</p></blockquote><div class="language-bash line-numbers-mode"><pre><code>jobs.<span class="token operator">&lt;</span>job_id<span class="token operator">&gt;</span>.steps.name：步骤名称。
+jobs.<span class="token operator">&lt;</span>job_id<span class="token operator">&gt;</span>.steps.run：该步骤运行的命令或者 action。
+jobs.<span class="token operator">&lt;</span>job_id<span class="token operator">&gt;</span>.steps.env：该步骤所需的环境变量。
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>参考：<a href="https://github.com/marketplace?type=actions" target="_blank" rel="noopener noreferrer">官方 Actions</a> 找到所需的 Actions:</p><div class="language-bash line-numbers-mode"><pre><code>Checkout: 从 Github 拉取仓库代码到 Github 服务器的 <span class="token variable">$GITHUB_WORKSPACE</span> 目录下
+cache: 缓存 <span class="token function">npm</span>
+setup-node: 安装 Node 和 Npm 环境
+actions-gh-pages: 在 Github 上发布静态资源
+可用的 Action 很多，这里只是设置了一个简单的流程
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><code>workflow</code> 配置示例 下面放一下项目中的 <code>.github/workflows/gh-pages-build-deployment.yaml</code> 文件：</p><div class="language-bash line-numbers-mode"><pre><code><span class="token comment"># 当前 workflow 的名称</span>
+name:  gh-pages-build-deployment
+
+<span class="token comment"># 指定 workflow 触发的 event</span>
+on:
+  push:
+    branches:
+      - main
+
+<span class="token comment"># 一个 workflow 由一个或多个 job 组成</span>
+jobs:
+  <span class="token comment"># job id: 是 job 的唯一标识</span>
+  build_and_deploy:
+  	<span class="token comment"># 在 Github 中显示的 job 名称</span>
+    name: Build and Deploy
+    <span class="token comment"># job 运行的环境配置</span>
+    runs-on: ubuntu-latest
+    <span class="token comment"># 一个 job 由多个 step 组成</span>
+    steps:
+      <span class="token comment"># 当前 step 的名字</span>
+      - name: Checkout
+        <span class="token comment"># checkout action 主要用于向 github 仓库拉取源代码</span>
+        <span class="token comment"># https://github.com/actions/checkout</span>
+        uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Cache
+        <span class="token comment"># cache 在这里主要用于缓存 npm，提升构建速率</span>
+        <span class="token comment"># https://github.com/actions/cache</span>
+        uses: actions/cache@v2
+        <span class="token comment"># npm 缓存的路径可查看 https://docs.npmjs.com/cli/cache#cache</span>
+        <span class="token comment"># 由于这里 runs-on 是 ubuntu-latest，因此配置 ~/.npm</span>
+        <span class="token comment"># 这里我用的yarn，所以是yarn-lock.json，也可以是package-lock.json</span>
+        with:
+          path: ~/.npm
+          key: <span class="token variable">${{ runner.os }</span><span class="token punctuation">}</span>-node-<span class="token variable">${{ hashFiles(&#39;**<span class="token operator">/</span>yarn-lock.json&#39;) }</span><span class="token punctuation">}</span>
+          restore-keys: <span class="token operator">|</span>
+            <span class="token variable">${{ runner.os }</span><span class="token punctuation">}</span>-node-
+      - name: Use Node.js
+      	<span class="token comment"># 配置 Node 执行环境（当前构建的服务器默认没有 Node 环境，可以通过 Action 安装 Node）</span>
+      	<span class="token comment"># https://github.com/actions/setup-node</span>
+        uses: actions/setup-node@v1
+        with:
+          node-version: <span class="token number">14</span>
+      - name: Install and Build
+      	<span class="token comment"># 安装 Node 之后就可以执行构建脚本</span>
+        run: <span class="token operator">|</span>
+          <span class="token function">yarn</span> <span class="token function">install</span>
+          <span class="token function">yarn</span> run build
+      - name: Deploy
+      	<span class="token comment"># 将构建产物 commit 到一个分支上，用于发布静态站点资源</span>
+      	<span class="token comment"># https://github.com/peaceiris/actions-gh-pages</span>
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          <span class="token comment"># Github 会在 workflow 中自动生成 GIHUBT_TOKEN，用于认证 workflow 的运行</span>
+          github_token: <span class="token variable">${{ secrets.GITHUB_TOKEN }</span><span class="token punctuation">}</span>
+          <span class="token comment"># 默认发布到 gh-pages 分支上，可以指定特定的发布分支（不能选拉取代码的分支）</span>
+          BRANCH: gh-pages
+          <span class="token comment"># 静态资源目录设置</span>
+          FOLDER: docs/.vitepress/dist
+</code></pre><div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br></div></div></div></div><footer class="page-footer" data-v-7eddb2c4 data-v-07c132fc><div class="edit" data-v-07c132fc><div class="edit-link" data-v-07c132fc data-v-1ed99556><!----></div></div><div class="updated" data-v-07c132fc><!----></div></footer><div class="next-and-prev-link" data-v-7eddb2c4 data-v-38ede35f><div class="container" data-v-38ede35f><div class="prev" data-v-38ede35f><a class="link" href="/vitepress-blog/technology/git/" data-v-38ede35f><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" class="icon icon-prev" data-v-38ede35f><path d="M19,11H7.4l5.3-5.3c0.4-0.4,0.4-1,0-1.4s-1-0.4-1.4,0l-7,7c-0.1,0.1-0.2,0.2-0.2,0.3c-0.1,0.2-0.1,0.5,0,0.8c0.1,0.1,0.1,0.2,0.2,0.3l7,7c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3c0.4-0.4,0.4-1,0-1.4L7.4,13H19c0.6,0,1-0.4,1-1S19.6,11,19,11z"></path></svg><span class="text" data-v-38ede35f>常用命令</span></a></div><div class="next" data-v-38ede35f><a class="link" href="/vitepress-blog/technology/vitepress/" data-v-38ede35f><span class="text" data-v-38ede35f>vitepress</span><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" class="icon icon-next" data-v-38ede35f><path d="M19.9,12.4c0.1-0.2,0.1-0.5,0-0.8c-0.1-0.1-0.1-0.2-0.2-0.3l-7-7c-0.4-0.4-1-0.4-1.4,0s-0.4,1,0,1.4l5.3,5.3H5c-0.6,0-1,0.4-1,1s0.4,1,1,1h11.6l-5.3,5.3c-0.4,0.4-0.4,1,0,1.4c0.2,0.2,0.5,0.3,0.7,0.3s0.5-0.1,0.7-0.3l7-7C19.8,12.6,19.9,12.5,19.9,12.4z"></path></svg></a></div></div></div><!--[--><!--]--></div></main></div><!----><!--]--></div>
+    <script>__VP_HASH_MAP__ = JSON.parse("{\"about_index.md\":\"53fcbea1\",\"index.md\":\"b55a5999\",\"technology_components_guide.md\":\"ea32be36\",\"technology_components_index.md\":\"b3e957a8\",\"technology_components_miniprogram_waterfall.md\":\"002dcc97\",\"technology_eslint_index.md\":\"c9eba2da\",\"technology_git_github-action-workflow.md\":\"d24dbed7\",\"technology_git_index.md\":\"c6a6541a\",\"technology_index.md\":\"b3b69ec2\",\"technology_react_index.md\":\"63130ad2\",\"technology_typescript_index.md\":\"0c364078\",\"technology_vite_index.md\":\"3c26979e\",\"technology_vitepress_index.md\":\"e37bf9e6\",\"technology_vue_index.md\":\"3ef4995c\",\"technology_vue_model.md\":\"5f6ed758\"}")</script>
+    <script type="module" async src="/vitepress-blog/assets/app.4d2006aa.js"></script>
+    
+  </body>
+</html>
