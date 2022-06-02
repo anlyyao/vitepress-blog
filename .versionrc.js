@@ -1,4 +1,11 @@
 module.exports = {
+  skip: {
+    // bump: true,
+    // changelog: true,
+    // 目前standard-version无法打tag，所以commit和tag暂时skip，这两部借助脚本实现
+    commit: true,
+    tag: true,
+  },
   types: [
     { type: 'chore', section: 'Others', hidden: false },
     { type: 'revert', section: 'Reverts', hidden: false },

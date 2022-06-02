@@ -1,6 +1,6 @@
 {
   "name": "vitepress-blog",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "serve": "vitepress serve docs --port 8080",
     "register:components": "vitepress-rc",
     "deploy-gh": "bash scripts/deploy-gh.sh",
-    "release": "standard-version",
+    "release": "standard-version && bash scripts/release.sh",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "devDependencies": {
