@@ -5,4 +5,4 @@ set -e
 
 git add -A
 git commit -m 'release'
-git push git@github.com:anlyyao/vitepress-blog.git main
+git push -f git@github.com:anlyyao/vitepress-blog.git main
