@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# git commit 时无感知的触发 git cz
+exec < /dev/tty && npx git-cz --hook || true
