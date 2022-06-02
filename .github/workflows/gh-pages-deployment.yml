@@ -1,0 +1,38 @@
+name: GH_PAGES_DEPLOYMENT
+on:
+  push:
+    branches: [main]
+jobs:
+  build-and-deploy:
+    # runs-on字段指定运行所需要的虚拟机环境。它是必填字段.
+    runs-on: ubuntu-latest
+    steps:
+      # 检出代码
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
+        run: |
+          npm install
+          npm run build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages # The branch the action should deploy to.
+          FOLDER: docs/.vitepress/dist # The folder the action should deploy.
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.163.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: ${{github.repository}}
+          to: anly_yaw@163.com
+          from: GitHub Actions ${{github.repository}}
+          body:  Deploy Time ${{steps.date.outputs.date}}

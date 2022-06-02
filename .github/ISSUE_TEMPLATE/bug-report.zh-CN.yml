@@ -1,0 +1,19 @@
+name: 反馈 Bug or Feature
+description: 通过 github 模板进行 Bug/Feature 反馈。
+title: "[Bug or Feature] 描述问题的标题"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 欢迎共建～～接受 bug 报告或是 feature 新功能请求。
+
+        在发布一个 Issue 前，请确保：
+        - 在 [常见问题]、[更新日志] 和 [旧Issue列表] 中搜索过你的问题。（你的问题可能已有人提出，也可能已在最新版本中被修正）
+        - 如果你发现一个已经关闭的旧 Issue 在最新版本中仍然存在，不要在旧 Issue 下面留言，请重新创建一个新的 issue。
+
+  - type: textarea
+    id: remarks
+    attributes:
+      label: 需求说明
+      description: 可以是遇到这个 bug 或需要这个 feature 的业务场景、上下文等信息。
+      placeholder: 请填写
