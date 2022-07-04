@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./app.6b5b154f.js";const l='{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"technology/eslint/index.md"}',o={};function r(n,c,s,i,_,d){return a(),t("div")}var f=e(o,[["render",r]]);export{l as __pageData,f as default};

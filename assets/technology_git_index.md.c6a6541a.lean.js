@@ -1,1 +1,0 @@
-import{_ as s,c as n,o as a,a as e}from"./app.4d2006aa.js";const g='{"title":"Git \u5E38\u7528\u672F\u8BED WIP PTAL CC LGTM \u89E3\u91CA","description":"","frontmatter":{},"headers":[],"relativePath":"technology/git/index.md"}',t={},p=e("",11),r=[p];function o(c,i,l,m,b,d){return a(),n("div",null,r)}var k=s(t,[["render",o]]);export{g as __pageData,k as default};
