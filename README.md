@@ -2,3 +2,5 @@
 A VitePress Site
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+[WEB](https://anlyyao.github.io/vitepress-blog/)
